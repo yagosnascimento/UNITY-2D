@@ -21,8 +21,19 @@ public class PlayerBehavior : MonoBehaviour
 
     private void Update()
     {
-        float moveDirection = GameManager.Instance.InputManager.Movement;
-        transform.Translate(moveDirection * Time.deltaTime * moveSpeed, 0, 0);
+        float moveDirection =
+            GameManager.Instance.InputManager.Movement;
+        transform.Translate(moveDirection *
+        Time.deltaTime * moveSpeed, 0, 0);
+
+        if (moveDirection < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else if (moveDirection > 0)
+        {
+            transform.localScale = Vector3.one;
+        }
     }
 
     private void HandleJump() 
